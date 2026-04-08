@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Trendy Style</title>
+
+<style>
+body {
+    font-family: Arial;
+    margin: 0;
+    background-color: #f8f8f8;
+}
+
+header {
+    background-color: black;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    margin: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+section {
+    padding: 20px;
+    text-align: center;
+}
+
+.producto {
+    background: white;
+    padding: 15px;
+    margin: 15px;
+    border-radius: 10px;
+    display: inline-block;
+    width: 200px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+}
+
+button {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #444;
+}
+</style>
+
+</head>
+<body>
+
+<header>
+    <h1>Trendy Style 👗</h1>
+    <nav>
+        <a onclick="mostrar('inicio')">Inicio</a>
+        <a onclick="mostrar('productos')">Productos</a>
+        <a onclick="mostrar('carrito')">Carrito</a>
+        <a onclick="mostrar('nosotros')">Nosotros</a>
+        <a onclick="mostrar('contacto')">Contacto</a>
+    </nav>
+</header>
+
+<!-- INICIO -->
+<section id="inicio">
+    <h2>Bienvenidos</h2>
+    <p>Descubre ropa moderna, cómoda y a buen precio.</p>
+</section>
+
+<!-- PRODUCTOS -->
+<section id="productos" style="display:none;">
+
+<div class="producto">
+    <h3>Camiseta</h3>
+    <p>L. 250</p>
+    <button onclick="agregarCarrito('Camiseta', 250)">Agregar</button>
+</div>
+
+<div class="producto">
+    <h3>Jeans</h3>
+    <p>L. 600</p>
+    <button onclick="agregarCarrito('Jeans', 600)">Agregar</button>
+</div>
+
+<div class="producto">
+    <h3>Vestido</h3>
+    <p>L. 800</p>
+    <button onclick="agregarCarrito('Vestido', 800)">Agregar</button>
+</div>
+
+</section>
+
+<!-- CARRITO -->
+<section id="carrito" style="display:none;">
+    <h2>Carrito 🛒</h2>
+    <ul id="lista"></ul>
+    <h3 id="total"></h3>
+    <button onclick="vaciarCarrito()">Vaciar carrito</button>
+</section>
+
+<!-- NOSOTROS -->
+<section id="nosotros" style="display:none;">
+    <h2>Sobre nosotros</h2>
+    <p>Somos una tienda de ropa moderna para jóvenes.</p>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto" style="display:none;">
+    <h2>Contacto</h2>
+    <p>WhatsApp: 9876-5432</p>
+    <p>Correo: trendystyle@gmail.com</p>
+</section>
+
+<script>
+let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+function mostrar(seccion) {
+    document.querySelectorAll("section").forEach(sec => sec.style.display = "none");
+    document.getElementById(seccion).style.display = "block";
+
+    if(seccion === "carrito") mostrarCarrito();
+}
+
+function agregarCarrito(nombre, precio) {
+    carrito.push({nombre, precio});
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+    alert("Producto agregado 🛒");
+}
+
+function mostrarCarrito() {
+    let lista = document.getElementById("lista");
+    let total = 0;
+    lista.innerHTML = "";
+
+    carrito.forEach(producto => {
+        let li = document.createElement("li");
+        li.textContent = producto.nombre + " - L. " + producto.precio;
+        lista.appendChild(li);
+        total += producto.precio;
+    });
+
+    document.getElementById("total").textContent = "Total: L. " + total;
+}
+
+function vaciarCarrito() {
+    localStorage.removeItem("carrito");
+    carrito = [];
+    mostrarCarrito();
+}
+</script>
+
+</body>
+</html>
