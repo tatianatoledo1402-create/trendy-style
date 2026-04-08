@@ -2,14 +2,15 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Trendy Style</title>
 <link rel="icon" href="banner.png">
-<!-- Fuentes -->
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@600&family=Great+Vibes&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
-body{background:#f8f8f8}
+body{background:#f8f8f8;overflow-x:hidden}
 
 /* HEADER */
 header{
@@ -20,8 +21,8 @@ header{
   padding:15px 30px;
   position:sticky;
   top:0;
-  box-shadow:0 2px 10px rgba(0,0,0,0.05);
 }
+
 header h2{
   font-family:'Great Vibes',cursive;
   font-size:28px;
@@ -29,182 +30,153 @@ header h2{
   align-items:center;
   gap:10px;
 }
+
 header h2 img{
   width:40px;
-  height:40px;
-  object-fit:contain;
 }
 
-/* MENÚ */
+/* NAV */
+nav{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+
 nav a{
-  margin:10px;
+  margin:8px;
   text-decoration:none;
   color:#333;
-  cursor:pointer;
-  position:relative;
-  font-family:'Montserrat',sans-serif;
   font-weight:600;
-  letter-spacing:1px;
 }
-nav a::after{
-  content:'';
-  position:absolute;
-  bottom:-5px;
-  left:0;
-  width:0;
-  height:2px;
-  background:#ff5e62;
-  transition:0.3s;
-}
-nav a:hover::after{width:100%}
 
 /* SECCIONES */
-section{display:none;padding:30px} 
+section{display:none;padding:20px}
 #inicio{display:block}
 
 /* BANNER */
-.banner{height:320px;overflow-x:auto;border-radius:15px} 
-.slider{display:flex;gap:10px} 
-.slider img{height:320px;border-radius:10px; max-width:100%;}
-
-/* TEXTO INICIO */
-.inicio-texto{text-align:center;margin-top:20px} 
-.inicio-texto h1{font-family:'Playfair Display',serif;font-size:28px}
-.inicio-texto p{font-size:16px;}
-
-/* DESTACADOS */
-.destacados{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:15px;margin-top:30px} 
-.card{background:#f5efe6;padding:20px;border-radius:15px;text-align:center;transition:0.3s;cursor:pointer;font-family:'Playfair Display',serif;font-size:16px} 
-.card:hover{transform:translateY(-5px)}
-
-/* TITULOS SECCIONES */
-.titulo-seccion{
-  margin:40px 0 20px;
-  text-align:center;
-  font-size:26px;
-  font-family:'Playfair Display',serif;
-  letter-spacing:1px;
+.banner{
+  overflow:hidden;
 }
 
-/* GRID DE PRODUCTOS */
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:15px;max-width:1200px;margin:auto}
-.seccion{margin-bottom:60px}
+.slider{
+  display:flex;
+  overflow-x:auto;
+  gap:10px;
+}
+
+.slider img{
+  width:100%;
+  max-width:250px;
+  border-radius:10px;
+}
+
+/* TEXTO */
+.inicio-texto{text-align:center;margin-top:20px}
+.inicio-texto h1{font-size:24px}
+.inicio-texto p{font-size:14px}
+
+/* DESTACADOS */
+.destacados{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+  gap:10px;
+  margin-top:20px;
+}
+
+.card{
+  background:#f5efe6;
+  padding:15px;
+  border-radius:10px;
+  text-align:center;
+}
+
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+  gap:10px;
+}
 
 /* PRODUCTO */
 .producto{
   background:white;
   padding:10px;
-  border-radius:15px;
-  transition:transform 0.3s ease, box-shadow 0.3s ease;
-  cursor:pointer;
+  border-radius:10px;
   text-align:center;
 }
-.producto:hover{
-  transform:scale(1.05);
-  box-shadow:0 10px 20px rgba(0,0,0,0.15);
-}
-.producto img{width:100%;height:200px;object-fit:contain}
-.producto p:first-of-type{
-  font-family:'Playfair Display',serif;
-  font-size:16px;
-  margin:5px 0;
+
+.producto img{
+  width:100%;
+  height:150px;
+  object-fit:contain;
 }
 
 /* BOTONES */
-button{margin-top:10px;padding:10px;width:100%;background:black;color:white;border:none;border-radius:10px;cursor:pointer}
+button{
+  margin-top:10px;
+  padding:10px;
+  width:100%;
+  background:black;
+  color:white;
+  border:none;
+  border-radius:8px;
+}
+
+/* INPUTS */
+input, textarea, select{
+  width:100%;
+  margin-top:10px;
+  padding:10px;
+  border-radius:8px;
+  border:1px solid #ccc;
+}
 
 /* MODAL */
-.modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);justify-content:center;align-items:center; z-index:999} 
-.modal-content{background:white;padding:20px;border-radius:15px;text-align:center;width:90%; max-width:350px;} 
-.modal img{width:100%; max-width:250px;}
+.modal{
+  display:none;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.6);
+  justify-content:center;
+  align-items:center;
+}
 
-/* COLORES */
-.colores span{display:inline-block;width:20px;height:20px;border-radius:50%;margin:5px;border:1px solid #ccc}
+.modal-content{
+  background:white;
+  padding:20px;
+  border-radius:10px;
+  width:90%;
+  max-width:300px;
+}
 
-/* CANTIDAD */
-.cantidad{display:flex;justify-content:center;align-items:center;margin-top:10px} 
-.cantidad button{width:40px} 
-.cantidad span{margin:0 10px}
-
-/* ITEMS CARRITO */
-.item{display:flex;justify-content:space-between;align-items:center;padding:10px;border-bottom:1px solid #eee} 
-.item button{background:red;color:white;border:none;padding:5px 10px;border-radius:8px;width:auto}
+.modal img{
+  width:100%;
+}
 
 /* FOOTER */
-footer{background:black;color:white;text-align:center;padding:15px;margin-top:20px}
-
-/* NOSOTROS TEXTO */
-#nosotros p{
-  line-height:1.6;
-  font-size:16px;
-  font-family:'Playfair Display',serif;
+footer{
+  background:black;
+  color:white;
   text-align:center;
+  padding:15px;
 }
 
-/* NUEVO: NOSOTROS */
-.titulo-nosotros {
-  text-align: center;
-  font-family: 'Great Vibes', cursive; /* Fuente estilo carta */
-  font-size: 35px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-}
-
-.logo-nosotros {
-  width: 50px;
-  height: 50px;
-  object-fit: contain;
-}
-
-/* Imagen de nosotros 1:1 */
-.img-nosotros {
-  display: block;
-  max-width: 250px;
-  max-height: 250px;
-  margin: 20px auto;
-  border-radius: 15px;
-  object-fit: cover;
-}
-
-/* MEDIA QUERIES PARA CELULAR */
-@media (max-width: 768px){
-  header{flex-direction: column; padding: 15px;}
-  header h2{font-size:24px; gap:8px;}
-  header h2 img{width:35px; height:35px;}
-  nav a{margin:5px; font-size:14px;}
-  .inicio-texto h1{font-size:22px;}
-  .inicio-texto p{font-size:14px;}
-  .destacados{grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:10px;}
-  .grid{grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:10px;}
-  .producto img{height:150px;}
-  .card{font-size:14px; padding:15px;}
-  .titulo-seccion{font-size:22px; margin:25px 0 15px;}
-  .img-nosotros{max-width:180px; max-height:180px;}
-  .titulo-nosotros{font-size:28px; gap:8px;}
-}
-
-@media (max-width: 480px){
-  header h2{font-size:20px;}
-  nav a{font-size:12px; margin:3px;}
-  .inicio-texto h1{font-size:18px;}
-  .inicio-texto p{font-size:13px;}
-  .card{font-size:13px; padding:10px;}
-  .producto img{height:120px;}
-  .titulo-seccion{font-size:20px;}
-  .img-nosotros{max-width:140px; max-height:140px;}
-  .titulo-nosotros{font-size:24px;}
+/* RESPONSIVE */
+@media(max-width:768px){
+  header{
+    flex-direction:column;
+  }
 }
 </style>
 </head>
 
 <body>
+
 <header>
-<h2>
-<img src="logo.png" alt="Logo">
-Trendy Style
-</h2>
+<h2><img src="logo.png">Trendy Style</h2>
 <nav>
 <a onclick="mostrar('inicio')">Inicio</a>
 <a onclick="mostrar('productos')">Productos</a>
@@ -217,15 +189,17 @@ Trendy Style
 <section id="inicio">
 <div class="banner">
 <div class="slider">
-<img src="b1.jpeg"><img src="b2.jpeg"><img src="b3.jpeg"><img src="b4.jpeg"><img src="b5.jpeg"><img src="b6.jpeg"><img src="b7.jpeg"><img src="b8.jpeg"><img src="b9.jpeg"><img src="b10.jpeg"><img src="b11.jpeg"><img src="b12.jpeg"><img src="b13.jpeg"><img src="b14.jpeg"><img src="b15.jpeg"><img src="b16.jpeg">
+<img src="b1.jpeg"><img src="b2.jpeg"><img src="b3.jpeg"><img src="b4.jpeg">
 </div>
 </div>
+
 <div class="inicio-texto">
 <h1>Viste con elegancia y confianza</h1>
-<p>¡Descubre las últimas tendencias en moda con calidad y estilo único!</p>
+<p>Descubre las últimas tendencias</p>
 </div>
+
 <div class="destacados">
-<div class="card" onclick="mostrar('productos')">🔥 Comprar ahora</div>
+<div class="card" onclick="mostrar('productos')">🔥 Comprar</div>
 <div class="card" onclick="mostrar('productos')">👗 Mujer</div>
 <div class="card" onclick="mostrar('productos')">👕 Hombre</div>
 <div class="card" onclick="mostrar('contacto')">📲 Contacto</div>
@@ -233,106 +207,50 @@ Trendy Style
 </section>
 
 <section id="productos">
-<div class="seccion">
-<h2 class="titulo-seccion">Ropa de Mujer</h2>
+<h2>Productos</h2>
 <div class="grid" id="mujer"></div>
-</div>
-<div class="seccion">
-<h2 class="titulo-seccion">Ropa de Hombre</h2>
-<div class="grid" id="hombre"></div>
-</div>
 </section>
 
 <section id="carrito">
-<div class="carrito-box">
 <h2>Carrito</h2>
 <div id="lista"></div>
 <h3 id="total"></h3>
-<select id="pago">
+
+<select>
 <option>Efectivo</option>
 <option>Transferencia</option>
 </select>
-<input id="nombre" placeholder="Nombre">
-<input id="direccion" placeholder="Dirección">
-<input id="telefono" placeholder="Teléfono">
-<button onclick="comprar()">Comprar</button>
-</div>
+
+<input placeholder="Nombre">
+<input placeholder="Dirección">
+<input placeholder="Teléfono">
+
+<button>Comprar</button>
 </section>
 
 <section id="nosotros">
-<h2 class="titulo-nosotros">
-  <img src="logo.png" alt="Logo" class="logo-nosotros">
-  Trendy Style
-</h2>
-<p>
-En Trendy Style creemos que la moda es mucho más que ropa; es una forma de expresión, una manera de mostrar al mundo quién eres y cómo te sientes...
-</p>
-<img src="nosotros.jpeg" alt="Trendy Style" class="img-nosotros">
+<h2>Nosotros</h2>
+<p>Somos una tienda moderna de moda.</p>
 </section>
 
 <section id="contacto">
 <h2>Contacto</h2>
-<p>📱 9539-1203</p>
-<p>📧 trendystyle@gmail.com</p>
 <input placeholder="Nombre">
 <input placeholder="Correo">
 <textarea placeholder="Mensaje"></textarea>
 <button>Enviar</button>
-<button onclick="window.open('https://wa.me/50495391203')">WhatsApp</button>
 </section>
-
-<div class="modal" id="modal" onclick="cerrarModal()">
-<div class="modal-content" onclick="event.stopPropagation()">
-<img id="modalImg">
-<p id="modalPrecio"></p>
-<div class="colores">
-<span style="background:black"></span>
-<span style="background:red"></span>
-<span style="background:blue"></span>
-<span style="background:green"></span>
-<span style="background:pink"></span>
-</div>
-<select id="talla">
-<option>XXS</option>
-<option>XS</option>
-<option>S</option>
-<option>M</option>
-<option>L</option>
-<option>XL</option>
-</select>
-<div class="cantidad">
-<button onclick="cambiarCantidad(-1)">-</button>
-<span id="cant">1</span>
-<button onclick="cambiarCantidad(1)">+</button>
-</div>
-<button onclick="agregarDesdeModal()">Agregar</button>
-</div>
-</div>
 
 <footer>
 <p>© 2026 Trendy Style</p>
 </footer>
 
 <script>
-// --- Tu código JS existente ---
-function precioRandom(){return Math.floor(Math.random()*500)+900}
-const nombresMujer = ["Blusa de manga larga","Body con cuello cuadrado","Camisa manga larga ajustada","Blusa con escote","Pantalon con cordon","Blusa tipo top","Top strapless","Pantalon de mezclilla","Pantalon de mezclilla estilo wide leg","Pantalon vaquero","Jeans acampanados","Vestido ajustado","Vestido con lazo","Vestido corto con tirantes","Vestido corto","Vestido de mezcla de algodon","Top sin tirantes","Top strapless","Top corset","Top ajustado","Top corset con lazo","Conjunto de dos piezas","Blusa tipo top","Conjunto","Top Strapless","Camisa tipo top","Camisa corta","Top sin tirantes","Pantalon ancho","Pantalon de rayas"];
-const nombresHombre = ["Camisa tipo polo","Camisa estilo retro","Polo de manga corta","Camisa oversize","Camisa de lino","Pantalon de Lino","Pantalon vaquero","Pantalon estilo baggy","Pantalon corte holgado","Pantalon vaquero baggy","Camiseta estilo oversized","Conjunto beige","Conjunto Casual","Conjunto de lino","Traje ajustado","Traje formal","Sudadera","Conjunto deportivo","Conjunto casual","Conjunto holgado","Conjunto de moda","Jeans rectos","Conjunto","Jeans estilo cargo","Pantalon cargo holgado","Jeans de corte amplio","Camisa clasica","Camisa polo","Camiseta de manga corta","Camisa con diseño casual"];
-function crearProducto(img,precio,nombre){return '<div class="producto" onclick="abrirModal(\''+img+'\','+precio+',\''+nombre+'\')"><img src="'+img+'"><p>'+nombre+'</p><p>L. '+precio+'</p></div>'}
-for(let i=1;i<=30;i++) document.getElementById('mujer').innerHTML+=crearProducto('m'+i+'.jpeg',precioRandom(),nombresMujer[i-1])
-for(let i=1;i<=30;i++) document.getElementById('hombre').innerHTML+=crearProducto('h'+i+'.jpeg',precioRandom(),nombresHombre[i-1])
-let carrito=JSON.parse(localStorage.getItem('carrito'))||[]
-let productoActual, cantidad=1
-function mostrar(s){document.querySelectorAll('section').forEach(x=>x.style.display='none');document.getElementById(s).style.display='block';if(s==='carrito')mostrarCarrito()}
-function abrirModal(img,precio,nombre){document.getElementById('modal').style.display='flex';document.getElementById('modalImg').src=img;document.getElementById('modalPrecio').textContent='L. '+precio;productoActual={nombre:nombre,precio:precio};cantidad=1;document.getElementById('cant').textContent=1}
-function cerrarModal(){document.getElementById('modal').style.display='none'}
-function cambiarCantidad(v){cantidad+=v;if(cantidad<1)cantidad=1;document.getElementById('cant').textContent=cantidad}
-function agregarDesdeModal(){for(let i=0;i<cantidad;i++)carrito.push(productoActual);localStorage.setItem('carrito',JSON.stringify(carrito));actualizar();cerrarModal()}
-function actualizar(){document.getElementById('contador').textContent=carrito.length}
-function mostrarCarrito(){let lista=document.getElementById('lista');lista.innerHTML='';let total=0;carrito.forEach((p,i)=>{let div=document.createElement('div');div.className='item';div.innerHTML=p.nombre+' - L.'+p.precio+' <button onclick="eliminar('+i+')">X</button>';lista.appendChild(div);total+=p.precio});document.getElementById('total').textContent='Total: L.'+total}
-function eliminar(i){carrito.splice(i,1);localStorage.setItem('carrito',JSON.stringify(carrito));mostrarCarrito();actualizar()}
-function comprar(){if(!confirm('¿Deseas realizar esta compra?'))return;let n=document.getElementById('nombre').value;if(n===''){alert('Completa datos');return}alert('✨ ¡Gracias por tu compra en Trendy Style, '+n+' !');carrito=[];localStorage.removeItem('carrito');actualizar();mostrar('inicio')}
-actualizar()
+function mostrar(s){
+document.querySelectorAll('section').forEach(x=>x.style.display='none');
+document.getElementById(s).style.display='block';
+}
 </script>
+
 </body>
 </html>
